@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "PN52A1UcJ/GbiBepLLT88VcZWz0pWj9+vOWpWpGE2Mem6zV9NibNCMYRyP+C1MOu0Qh6uEuNjKuyFUcatfwvWg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ferhat\\source\\repos\\Kodlama.io_Camp\\ReCapProject\\Entities\\Entities.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ferhat\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\ferhat\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
