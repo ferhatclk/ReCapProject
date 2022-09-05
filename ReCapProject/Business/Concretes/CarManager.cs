@@ -1,5 +1,5 @@
 ﻿using Business.Abstracts;
-using DataAccess.InMemory.Abstracts;
+using DataAccess.Abstracts;
 using Entities.Concretes;
 using System;
 using System.Collections.Generic;
@@ -18,6 +18,8 @@ namespace Business.Concretes
 
         public void Add(Car car)
         {
+            CheckIfCarDescriptionLength(car);
+            CheckIfCarDailyPrice(car);
             _carDal.Add(car);
         }
 
@@ -33,12 +35,34 @@ namespace Business.Concretes
 
         public Car GetById(int id)
         {
-            return _carDal.GetById(id);
+            return _carDal.Get(c=>c.CarId==id);
+        }
+
+        public List<Car> GetCarsByBrandId(int id)
+        {
+            return _carDal.GetAll(c => c.BrandId == id);
+        }
+
+        public List<Car> GetCarsByColorId(int id)
+        {
+            return _carDal.GetAll(c => c.ColorId == id);
         }
 
         public void Update(Car car)
         {
             _carDal.Update(car);
+        }
+
+        private void CheckIfCarDescriptionLength(Car car)
+        {
+            if (car.Description.Length < 2)
+                throw new Exception("Description is not the requested length");
+        }
+
+        private void CheckIfCarDailyPrice(Car car)
+        {
+            if (car.DailyPrice <= 0)
+                throw new Exception("Daily price entered incorrectly");
         }
     }
 }
