@@ -12,3 +12,5 @@ C:\Users\ferhat\source\repos\Kodlama.io_Camp\ReCapProject\Business\obj\Debug\net
 C:\Users\ferhat\source\repos\Kodlama.io_Camp\ReCapProject\Business\obj\Debug\netstandard2.0\Business.csproj.CopyComplete
 C:\Users\ferhat\source\repos\Kodlama.io_Camp\ReCapProject\Business\obj\Debug\netstandard2.0\Business.dll
 C:\Users\ferhat\source\repos\Kodlama.io_Camp\ReCapProject\Business\obj\Debug\netstandard2.0\Business.pdb
+C:\Users\ferhat\source\repos\Kodlama.io_Camp\ReCapProject\Business\bin\Debug\netstandard2.0\Core.dll
+C:\Users\ferhat\source\repos\Kodlama.io_Camp\ReCapProject\Business\bin\Debug\netstandard2.0\Core.pdb
