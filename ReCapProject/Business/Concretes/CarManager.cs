@@ -1,4 +1,6 @@
 ﻿using Business.Abstracts;
+using Business.Constants.Messages;
+using Core.Utilities.Results;
 using DataAccess.Abstracts;
 using Entities.Concretes;
 using Entities.Dtos;
@@ -17,58 +19,74 @@ namespace Business.Concretes
             this._carDal = carDal;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
-            CheckIfCarDescriptionLength(car);
+            CheckIfCarNameLength(car);
             CheckIfCarDailyPrice(car);
             _carDal.Add(car);
+
+            return new SuccessResult(Messages.CarAdded);
         }
 
-        public void Delete(Car car)
+        public IResult Delete(Car car)
         {
             _carDal.Delete(car);
+
+            return new SuccessResult(Messages.CarDeleted);
         }
 
-        public List<Car> GetAll()
+        public IDataResult<List<Car>> GetAll()
         {
-            return _carDal.GetAll();
+            var result = _carDal.GetAll();
+            
+            return new SuccessDataResult<List<Car>>(result, Messages.CarListed);
         }
 
-        public Car GetById(int id)
+        public IDataResult<Car> GetById(int id)
         {
-            return _carDal.Get(c=>c.CarId==id);
+            var result = _carDal.Get(c=>c.CarId==id);
+
+            return new SuccessDataResult<Car>(result, Messages.CarListed);
         }
 
-        public List<Car> GetCarsByBrandId(int id)
+        public IDataResult<List<Car>> GetCarsByBrandId(int id)
         {
-            return _carDal.GetAll(c => c.BrandId == id);
+            var result = _carDal.GetAll(c => c.BrandId == id);
+
+            return new SuccessDataResult<List<Car>>(result, Messages.CarListed);
         }
 
-        public List<Car> GetCarsByColorId(int id)
+        public IDataResult<List<Car>> GetCarsByColorId(int id)
         {
-            return _carDal.GetAll(c => c.ColorId == id);
+            var result = _carDal.GetAll(c => c.ColorId == id);
+
+            return new SuccessDataResult<List<Car>>(result, Messages.CarListed);
         }
 
-        public List<CarDetailDto> GetCarDetails()
+        public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            return _carDal.GetCarDetails();
+            var result = _carDal.GetCarDetails();
+
+            return new SuccessDataResult<List<CarDetailDto>>(result, Messages.CarListed);
         }
 
-        public void Update(Car car)
+        public IResult Update(Car car)
         {
             _carDal.Update(car);
+
+            return new SuccessResult(Messages.CarUpdated);
         }
 
-        private void CheckIfCarDescriptionLength(Car car)
+        private void CheckIfCarNameLength(Car car)
         {
-            if (car.Description.Length < 2)
-                throw new Exception("Description is not the requested length");
+            if (car.CarName.Length < 2)
+                throw new Exception(Messages.CarNameInvalid);
         }
 
         private void CheckIfCarDailyPrice(Car car)
         {
             if (car.DailyPrice <= 0)
-                throw new Exception("Daily price entered incorrectly");
+                throw new Exception(Messages.DailyPriceInvalid);
         }
     }
 }
