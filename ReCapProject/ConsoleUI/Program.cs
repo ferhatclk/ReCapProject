@@ -30,7 +30,7 @@ namespace ConsoleUI
 
             carManager.GetById(4);
 
-            foreach (var car in carManager.GetCarDetails())
+            foreach (var car in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine("{0} / {1} / {2} / {3}",car.CarName,car.BrandName,car.ColorName,car.DailyPrice);
             }
@@ -45,7 +45,7 @@ namespace ConsoleUI
 
             colorManager.GetById(1);
             
-            foreach (var color in colorManager.GetAll())
+            foreach (var color in colorManager.GetAll().Data)
             {
                 Console.WriteLine(color.ColorName);
             }
@@ -60,7 +60,7 @@ namespace ConsoleUI
             
             brandManager.GetById(3);
 
-            foreach (var brand in brandManager.GetAll())
+            foreach (var brand in brandManager.GetAll().Data)
             {
                 Console.WriteLine(brand.BrandName);
             }
